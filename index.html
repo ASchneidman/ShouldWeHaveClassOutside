@@ -1,63 +1,68 @@
 <html>
 <!-- Using https://github.com/michael-lynch/open-weather to get weather data -->
+
 <head>
-  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
-  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="/Users/Alex/Documents/ShouldWeHaveClassOutside/js/plugins/openWeather.js"></script>
+    <link rel="stylesheet" type="text/css" href="index_style.css" />
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/Users/Alex/Documents/ShouldWeHaveClassOutside/js/plugins/openWeather.js"></script>
 
-  <title>Should We Have Class Outside?</title>
-  <body>
-    <center>
-      <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+    <title>Should We Have Class Outside?</title>
+
+    <body>
+        <center>
+            <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
 
 
+            <div id="form">
 
-      <form id="frm1">
-        Zip Code: <input type="text" name="fname" id="userinput"><br>
-        <input type="button" onclick="gettingJSON()" value="Submit">
-      </form>
 
-      <script src="/Users/Alex/Documents/ShouldWeHaveClassOutside/js/plugins/openWeather.js"></script>
-
-      <div id="demo">
-        <p>
-
-        </p>
-      </div>
-
-      <script>
-      function gettingJSON(){
-        var zip = document.getElementById('userinput').value;
-        var jsonStr = "http://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&APPID=6e080880894f9be24853580062ac920a";
-        //document.write("jquery loaded");
-        //  $.getJSON("http://api.openweathermap.org/data/2.5/weather?zip=60093,us&APPID=6e080880894f9be24853580062ac920a",function(json){
-        $.getJSON(jsonStr,function(json){
-        // document.write(JSON.stringify(json));
-          var total_weather = JSON.stringify(json);
-          var temp_pos = total_weather.search("temp")+6;
-          var final_temp_kelv = total_weather.substring(temp_pos, temp_pos+6);
-          var final_temp_far = (9/5)*(final_temp_kelv-273)+32;
-          document.getElementById("demo").innerHTML = Math.round(final_temp_far*100)/100 + "°";
-
-          if (final_temp_far > 60) {
-            document.getElementById("demo").innerHTML = "Yes.";
-          } else {
-            document.getElementById("demo").innerHTML = "Too cold.";
-          }
-        });
-    }
-    </script>
-
-      <script>
-        function getZip() {
-          var zip = document.getElementById('userinput').value;
-          document.getElementById("demo").innerHTML = zip;
-        }
-        </script>
+                <form id="frm1">
+                    Zip Code: <input type="text" name="fname" id="userinput"><br>
+                    <input type="button" onclick="gettingJSON()" value="Submit">
+                </form>
+                <p id="demo">
+                  
+                </p>
+            </div>
+            <script src="/Users/Alex/Documents/ShouldWeHaveClassOutside/js/plugins/openWeather.js"></script>
 
 
 
-    </center>
-  </body>
+            <script>
+                function gettingJSON() {
+                    var zip = document.getElementById('userinput').value;
+                    var jsonStr = "http://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&APPID=6e080880894f9be24853580062ac920a";
+                    //document.write("jquery loaded");
+                    //  $.getJSON("http://api.openweathermap.org/data/2.5/weather?zip=60093,us&APPID=6e080880894f9be24853580062ac920a",function(json){
+                    $.getJSON(jsonStr, function(json) {
+                        // document.write(JSON.stringify(json));
+                        var total_weather = JSON.stringify(json);
+                        var temp_pos = total_weather.search("temp") + 6;
+                        var final_temp_kelv = total_weather.substring(temp_pos, temp_pos + 6);
+                        var final_temp_far = (9 / 5) * (final_temp_kelv - 273) + 32;
+                        document.getElementById("demo").innerHTML = Math.round(final_temp_far * 100) / 100 + "°";
+
+                        if (final_temp_far > 60) {
+                            document.getElementById("demo").innerHTML = "Yes.";
+                        } else {
+                            document.getElementById("demo").innerHTML = "Too cold.";
+                        }
+                    });
+                }
+            </script>
+
+            <script>
+                function getZip() {
+                    var zip = document.getElementById('userinput').value;
+                    document.getElementById("demo").innerHTML = zip;
+                }
+            </script>
+
+
+
+        </center>
+    </body>
 </head>
+
 </html>
