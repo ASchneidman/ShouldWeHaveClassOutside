@@ -22,7 +22,7 @@
                     <input type="button" onclick="gettingJSON()" value="Submit">
                 </form>
                 <p id="demo">
-                  
+
                 </p>
             </div>
             <script src="/Users/Alex/Documents/ShouldWeHaveClassOutside/js/plugins/openWeather.js"></script>
@@ -43,10 +43,12 @@
                         var final_temp_far = (9 / 5) * (final_temp_kelv - 273) + 32;
                         document.getElementById("demo").innerHTML = Math.round(final_temp_far * 100) / 100 + "°";
 
-                        if (final_temp_far > 60) {
+                        if (final_temp_far >= 60) {
                             document.getElementById("demo").innerHTML = "Yes.";
-                        } else {
+                        } else if (final_temp_far < 60) {
                             document.getElementById("demo").innerHTML = "Too cold.";
+                        } else {
+                            document.getElementById("demo").innerHTML = "Can't find that zip code.";
                         }
                     });
                 }
