@@ -12,7 +12,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="/Users/Alex/Documents/ShouldWeHaveClassOutside/js/plugins/openWeather.js"></script>
 
     <title>Should We Have Class Outside?</title>
 
@@ -20,17 +19,32 @@
         <center>
             <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
 
-
+            <h1>Should We Have Class Outside?</h1><br /><br />
             <div id="form">
 
 
                 <form id="frm1">
-                    Zip Code: <input type="text" name="fname" id="userinput"><br>
-                    <input type="button" onclick="gettingJSON()" value="Submit">
+                    Zip Code: <input type="text" id="userinput" onkeypress="return searchKeyPress"><br><br />
+                    <input type="button" onclick="gettingJSON()" value="Submit" id="btn1" />
+
+                    <script>
+                        function searchKeyPress(e) {
+                            // look for window.event in case event isn't passed in
+                            e = e || window.event;
+                            if (e.keyCode == 13) {
+                                document.getElementById('btn1').click();
+                                return false;
+                            }
+                            return true;
+                        }
+                    </script>
+
                 </form>
+
                 <p id="demo">
 
                 </p>
+
             </div>
             <script src="/Users/Alex/Documents/ShouldWeHaveClassOutside/js/plugins/openWeather.js"></script>
 
