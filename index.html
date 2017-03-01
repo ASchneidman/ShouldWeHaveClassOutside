@@ -52,6 +52,7 @@
 
             <script>
                 function gettingJSON() {
+                    document.getElementById("demo").innerHTML = "Finding the weather...";
                     var zip = document.getElementById('userinput').value;
                     var jsonStr = "http://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&APPID=6e080880894f9be24853580062ac920a";
                     //document.write("jquery loaded");
